@@ -14,7 +14,7 @@ import Contact from './components/Contact'
 import Faq from './components/Faq'
 import { ArrowLink } from './components/Ui'
 import { getPage, normalizePath } from './routes'
-
+import { Analytics } from "@vercel/analytics/react"
 function PageContent({ path }: { path: string }) {
   switch (path) {
     case '/': return <Home />
@@ -34,5 +34,5 @@ export function NextStep({ title, text, href, label }: { title: string; text: st
 }
 export default function App({ path = '/' }: { path?: string }) {
   const route = normalizePath(path)
-  return <><a href="#main" className="skip-link">Skip to content</a><Header currentPath={getPage(route)?.path || '/404/'} /><main id="main" tabIndex={-1}><PageContent path={route} /></main><Footer /></>
+  return <><a href="#main" className="skip-link">Skip to content</a><Analytics /><Header currentPath={getPage(route)?.path || '/404/'} /><main id="main" tabIndex={-1}><PageContent path={route} /></main><Footer /></>
 }
