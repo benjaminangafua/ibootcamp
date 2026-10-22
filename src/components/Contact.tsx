@@ -1,0 +1,13 @@
+import { useState } from 'react'
+import { ArrowUpRight, Phone, MessageCircle, MapPin } from 'lucide-react'
+import { displayPhone, phone, whatsappUrl } from '../content'
+import { Eyebrow } from './Ui'
+const audiences = [
+  { label: 'Learner or parent', message: 'Hello iBootCamp, I am a learner or parent interested in the proposed Saturday technology program. Please share the launch and admissions updates.' },
+  { label: 'School or educator', message: 'Hello iBootCamp, I represent a school or work in education. I would like to discuss the proposed program and school partnership opportunities.' },
+  { label: 'Sponsor or partner', message: 'Hello iBootCamp, I would like to discuss supporting the proposed first cohort. Please share the delivery plan and budget.' },
+]
+export default function Contact() {
+  const [audience, setAudience] = useState(0)
+  return <section id="contact" className="section-space border-y border-line bg-warm"><div className="site-shell grid gap-10 lg:grid-cols-[1.1fr_0.9fr]"><div><Eyebrow>The next step is a conversation</Eyebrow><h2 className="section-title mt-5">Big ideas start<br />with <span className="text-teal">a hello.</span></h2><p className="mt-6 max-w-md text-base leading-8 text-teal/80">Curious about learning? Ready to partner? Tell us where you fit, and let’s talk about what comes next.</p><p className="mt-6 flex items-center gap-2 text-sm font-medium text-teal"><MapPin size={16} />Liberia · Proposed first cohort</p></div><div className="self-center rounded-2xl border border-teal/15 bg-white/65 p-6 sm:p-8"><p className="text-sm font-semibold text-teal">I’m reaching out as a…</p><div className="mt-4 flex flex-wrap gap-2">{audiences.map((item, index) => <button key={item.label} onClick={() => setAudience(index)} aria-pressed={audience === index} className={`rounded-full border px-4 py-2.5 text-xs font-semibold transition ${audience === index ? 'border-teal bg-teal text-white' : 'border-teal/20 hover:bg-white'}`}>{item.label}</button>)}</div><a href={whatsappUrl(audiences[audience].message)} target="_blank" rel="noopener noreferrer" className="button button-dark mt-6 w-full"><span className="flex items-center gap-3"><MessageCircle size={18} />Start a conversation</span><ArrowUpRight size={19} /></a><a href={`tel:${phone}`} className="mt-5 flex items-center justify-center gap-2 py-2 text-sm font-semibold text-teal"><Phone size={15} />{displayPhone}</a><p className="mt-4 border-t border-teal/15 pt-4 text-xs leading-6 text-teal/75">WhatsApp opens with a draft for you to review and send. This website does not collect applications or payments. If you are under 18, involve a parent or guardian.</p></div></div></section>
+}
