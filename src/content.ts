@@ -77,7 +77,7 @@ export const team = [
     name: 'Veronica F. Davis', role: 'Chief Executive Officer', abbreviation: 'CEO', initials: 'VD',
     description: 'Leads the organization’s direction, builds partnerships, and coordinates fundraising for the proposed program.',
     reportsTo: 'Board of Directors', remit: 'Strategy & partnerships',
-    photo: '/images/profile-sample-one.jpeg', photoPosition: '65% center', photoStatus: 'Illustrative portrait',
+    photo: '/images/veronica.jpg', photoPosition: '65% center', photoStatus: 'Illustrative portrait',
     bio: [
       'Veronica F. Davis is the proposed Chief Executive Officer of iBootCamp. The role brings together organizational strategy, school and community partnerships, and fundraising for the 24-month technology education program.',
       'Veronica’s responsibilities include coordinating launch readiness, aligning the executive team with the organization’s mission, and reporting performance and risk to the Board of Directors.',
@@ -89,7 +89,7 @@ export const team = [
     name: 'Benjamin A. Ngafua', role: 'Chief Technology Officer', abbreviation: 'CTO', initials: 'BN',
     description: 'Leads curriculum, teaching quality, and learning technology, with practical projects at the center of the program.',
     reportsTo: 'Chief Executive Officer', remit: 'Learning & technology',
-    photo: '/images/profile-sample-two.jpeg', photoPosition: '66% center', photoStatus: 'Illustrative portrait',
+    photo: '/images/benjamin-ngafua.jpg', photoPosition: '66% center', photoStatus: 'Illustrative portrait',
     bio: [
       'Benjamin A. Ngafua is the proposed Chief Technology Officer of iBootCamp. The role covers curriculum design, teaching quality, and the technology used across the junior and senior learning tracks.',
       'Benjamin’s responsibilities include supervising trainers and lab support, organizing practical learning activities, and helping learners demonstrate their progress through assessed work and portfolios.',
@@ -101,7 +101,7 @@ export const team = [
     name: 'Joseph F. Cooper', role: 'Chief Operating Officer', abbreviation: 'COO', initials: 'JC',
     description: 'Coordinates daily operations, finance, administration, and learner support to keep the program organized.',
     reportsTo: 'Chief Executive Officer', remit: 'Operations & learner support',
-    photo: '/images/profile-sample-three.jpeg', photoPosition: '61% center', photoStatus: 'Illustrative portrait',
+    photo: '/images/joseph.jpg', photoPosition: '61% center', photoStatus: 'Illustrative portrait',
     bio: [
       'Joseph F. Cooper is the proposed Chief Operating Officer of iBootCamp. The role connects daily program delivery with the financial, administrative, and logistical arrangements needed to run the bootcamp.',
       'Joseph’s responsibilities include coordinating learner support, keeping operational records organized, and supporting the schedules and resources required for supervised Saturday sessions.',
