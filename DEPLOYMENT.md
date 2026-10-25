@@ -7,11 +7,14 @@ The site is ready for a new repository named `ibootcamp` and a new Vercel projec
 - React + TypeScript production build with Tailwind CSS.
 - Nine separate prerendered pages, then React hydration.
 - Curriculum track and year controls, sponsorship selections, FAQs, contact selections, and mobile navigation.
+- Photo backgrounds on every page hero, larger type, and team biography dialogs with a two-column desktop layout and a stacked mobile layout.
+- Content photography across the learning, approach, partnership, and impact sections.
+- Optional Code.org YouTube player with a local poster, direct watch link, and player removal control.
 - Reconciled program hours and budget totals.
 - Navigation between separate pages, accessible control names, image alternatives, and required program-status disclosures.
 - Printable program overview, privacy information, and a brand identity page using the supplied logos.
 
-Desktop navigation and curriculum controls were verified in Chrome. Phone and tablet layouts were reviewed at 375 px and 768 px, including the mobile menu and separate leadership page. Verify the live deployment URL after publishing.
+Desktop navigation and curriculum controls were verified in Chrome. Phone and tablet layouts were reviewed at 375 px and 768 px, including the mobile menu and separate leadership page. Biography dialogs support native modal focus handling, Escape dismissal, focus return, and a close button that remains visible while text scrolls. Team photos are labeled illustrative placeholders; bios cover the proposed responsibilities. Verify the live deployment URL after publishing.
 
 ## GitHub
 

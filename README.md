@@ -16,7 +16,7 @@ npm run check
 npm run build
 ```
 
-The build generates nine separate prerendered HTML pages in `dist/`, with React hydration for the curriculum controls, frequently asked questions, mobile menu, and contact selectors. Fonts and images are served locally.
+The build generates nine separate prerendered HTML pages in `dist/`, with React hydration for the curriculum controls, frequently asked questions, mobile menu, team biography dialogs, optional video playback, and contact selectors. Fonts and images are served locally.
 
 ## Deploy to Vercel
 
@@ -38,7 +38,7 @@ The supplied 13-slide `iBootCamp Presentation.pptx` is the current content and b
 
 The phone number is supplied in the presentation. WhatsApp links prepare a draft for the visitor to send; the website never sends messages automatically. There is no application database, payment processor, analytics tracker, or contact-form backend. Hosting providers may still process request logs.
 
-Classroom images are supplied presentation illustrations and are labeled accordingly. Team members use initials rather than unverified portraits. Obtain suitable consent before replacing them with identifiable participant photographs.
+All page heroes use locally served images from the supplied presentation. Team cards and biography dialogs use sample portraits from the earlier deck, visibly labeled “Illustrative portrait · confirmed photo pending.” These are not verified photographs of the named team members. Replace them with approved portraits when available. Bios describe the proposed responsibilities in the current deck and do not invent qualifications or career history. Update portraits, crop positions, bios, and focus areas in `src/content.ts`.
 
 The results section follows the revised presentation: 34 learners retained, 32 completing, 34 competent, and a 28-point skill-gain target. The presentation does not specify that target’s scoring scale, so the website identifies it as requiring definition before baseline measurement. Targets are never presented as achieved results. The Board structure now follows the revised deck’s five independent members.
 
@@ -68,4 +68,14 @@ The ZIP contains the React source and the ready-to-host `dist/` directory. Run `
 
 ## Browser review
 
-Desktop navigation and curriculum controls were reviewed in Chrome. Phone and tablet layouts were reviewed at 375 px and 768 px using responsive preview frames, including the mobile menu and separate leadership page. Automated checks verify every route and linked local asset.
+Desktop navigation and curriculum controls were reviewed in Chrome. Phone and tablet layouts were reviewed at 375 px and 768 px using responsive preview frames, including the mobile menu and separate leadership page. The updated photo heroes and team biography dialogs were reviewed in Chrome, including the two-column desktop layout, stacked phone layout, scrolling, close control, Escape dismissal, and focus return. Automated checks verify every route and linked local asset.
+
+## Photography and learning video
+
+Content photos accompany the homepage learning experience, About page approach cards, program assessment section, partner learning-space feature, and impact story. These locally served images are illustrative assets from the supplied presentation, not evidence of current operations or measured results. The existing family and team photos remain.
+
+The Program page includes Code.org’s **How Computers Work: What Makes a Computer, a Computer?**: https://www.youtube.com/watch?v=mCq8-xTH7jA. Its identity was checked against the official video collection at https://code.org/en-US/resources/videos on October 25, 2026. The illustrated poster uses a locally hosted program image; the video remains on YouTube and belongs to its publisher.
+
+`src/components/LearningVideo.tsx` displays a local illustrated poster until a visitor chooses to load the privacy-enhanced YouTube player. Playback does not autoplay. The player supports captions and fullscreen, with a persistent direct YouTube link and a close control that removes the iframe. Internet access is required. Portable previews opened using `file:` or `blob:` open the direct video link because embedded players need a valid website referrer. The website information page describes this optional third-party connection.
+
+Media QA: content photos and the responsive video layout were reviewed in Chrome. The YouTube player loaded with the correct title and controls; removing the player returned focus to the watch button. Full playback could not be confirmed in the preview environment. Verify playback on the final hosting domain.

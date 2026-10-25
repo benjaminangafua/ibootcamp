@@ -22,9 +22,10 @@ for (const [path, document] of documents) {
       if (page && fragment) assert.ok(documents.get(page.path)?.getElementById(fragment), `Missing cross-page anchor ${href}`)
     }
   }
-  for (const img of document.querySelectorAll('img')) { assert.ok(img.getAttribute('alt')); assert.ok(existsSync(`public${img.getAttribute('src')}`)) }
+  for (const img of document.querySelectorAll('img')) { assert.ok(img.getAttribute('alt') || img.getAttribute('aria-hidden') === 'true'); assert.ok(existsSync(`public${img.getAttribute('src')}`)) }
   for (const button of document.querySelectorAll('button')) assert.ok(button.textContent?.trim() || button.getAttribute('aria-label'))
   assert.ok(!document.querySelector('form'))
+  assert.ok(document.querySelector('[data-hero] img'), `Missing photo hero on ${path}`)
   if (path !== '/brand/') assert.equal(document.querySelector('header a[aria-current="page"]')?.getAttribute('href'),path)
 }
 assert.ok(documents.get('/about/')!.body.textContent.includes(organization.vision))
@@ -48,6 +49,22 @@ async function click(text: string) {
   await act(async()=>{button.dispatchEvent(new window.Event('click',{bubbles:true}))})
 }
 async function page(path:string) { await act(async()=>{root!.render(<App key={path} path={path} />)}) }
+assert.equal(document.querySelector('#learning-video iframe'), null, 'Do not contact YouTube before a visitor chooses to load it')
+assert.equal(document.querySelector('#learning-video a')?.getAttribute('href'), 'https://www.youtube.com/watch?v=mCq8-xTH7jA')
+Object.assign(globalThis, { requestAnimationFrame: (callback: () => void) => setTimeout(callback, 0) })
+await click('Watch the video')
+const player = document.querySelector('#learning-video iframe')
+assert.ok(player?.getAttribute('src')?.startsWith('https://www.youtube-nocookie.com/embed/mCq8-xTH7jA?'))
+assert.ok(player?.getAttribute('src')?.includes('autoplay=0'))
+assert.ok(player?.getAttribute('title'))
+await click('Close video')
+assert.equal(document.querySelector('#learning-video iframe'), null, 'Closing removes the external player')
+let openedVideo = ''
+Object.assign(window, { location: { protocol: 'file:' }, open: (url: string) => { openedVideo = url } })
+await click('Watch the video')
+assert.equal(openedVideo, 'https://www.youtube.com/watch?v=mCq8-xTH7jA', 'Downloaded previews open the direct video link')
+assert.equal(document.querySelector('#learning-video iframe'), null)
+assert.ok(document.body.textContent.includes('The downloaded preview opens the video on YouTube.'))
 await click('Senior · Grades 10–12')
 assert.ok(document.body.textContent.includes('Produce a formatted report and a safe research log.'))
 await click('Year 2')
@@ -67,4 +84,4 @@ assert.equal(document.getElementById('mobile-menu-toggle')?.getAttribute('aria-e
 await act(async()=>{document.querySelector('#mobile-navigation a')!.dispatchEvent(new window.Event('click',{bubbles:true}))})
 assert.equal(document.getElementById('mobile-menu-toggle')?.getAttribute('aria-expanded'),'false')
 await act(async()=>{root!.unmount()})
-console.log('Hydrated controls passed: curriculum, sponsorship, FAQ, contact, and navigation.')
+console.log('Hydrated controls passed: video loading and removal, curriculum, sponsorship, FAQ, contact, and navigation.')
